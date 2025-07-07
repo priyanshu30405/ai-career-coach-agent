@@ -9,6 +9,7 @@ export async function POST(req: NextRequest) {
     const coverLetter = (aiResponse.output?.[0] as { content: string })?.content || '';
     return NextResponse.json({ coverLetter });
   } catch (error) {
-    return NextResponse.json({ error: error.message || 'Failed to generate cover letter' }, { status: 500 });
+    const message = typeof error === 'object' && error && 'message' in error ? (error as any).message : 'Failed to generate cover letter';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 } 

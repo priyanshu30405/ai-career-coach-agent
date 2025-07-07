@@ -10,9 +10,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  experimental: {
-    serverComponentsExternalPackages: ['@neondatabase/serverless'],
-  },
+  serverExternalPackages: ['@neondatabase/serverless'],
   async headers() {
     return [
       {

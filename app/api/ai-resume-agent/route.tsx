@@ -7,6 +7,15 @@ import { inngest } from "@/inngest/client";
 import axios from "axios";
 import { currentUser } from "@clerk/nextjs/server";
 
+async function getRuns(runId: string) {
+  const result = await axios.get(`${process.env.INNGEST_SERVER_HOST}/v1/events/${runId}/runs`, {
+    headers: {
+      Authorization: `Bearer ${process.env.INNGEST_SIGNING_KEY}`,
+    }
+  });
+  return result.data;
+}
+
 export async function POST(req:NextRequest){
   try {
     const FormData = await req.formData();
@@ -76,13 +85,4 @@ export async function POST(req:NextRequest){
     console.error('Error in resume analysis:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
-}
- 
- export async function getRuns(runId: string) {
-   const result = await axios.get(`${process.env.INNGEST_SERVER_HOST}/v1/events/${runId}/runs`, {
-     headers: {
-       Authorization: `Bearer ${process.env.INNGEST_SIGNING_KEY}`,
-     }
-   });
-   return result.data;
- }   
+}   
