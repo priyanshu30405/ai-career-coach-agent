@@ -1,8 +1,9 @@
 "use client"
-import React, { useEffect, useState, type JSX } from 'react';
+import React, { useContext, useEffect, useState, type JSX } from 'react';
 import { useAuth } from '@clerk/nextjs';
 import { checkUsageLimits, FREE_TIER_LIMITS } from '@/lib/subscription-utils';
 import { FaRobot, FaFileAlt, FaMapSigns, FaEnvelopeOpenText } from 'react-icons/fa';
+import { UsageContext } from './UsageProvider';
 
 const toolIcons: Record<string, JSX.Element> = {
   'AI Career Q&A Chat': <FaRobot className="text-blue-500" />,
@@ -47,6 +48,7 @@ function UsageBar({ label, value, max }: UsageBarProps) {
 
 export default function UsageIndicator() {
   const { has } = useAuth();
+  const { usageRefreshToken } = useContext(UsageContext);
   const [isPro, setIsPro] = useState(false);
   const [usage, setUsage] = useState({ chat: 0, resume: 0, roadmap: 0, cover: 0 });
   const [loading, setLoading] = useState(true);
@@ -78,7 +80,7 @@ export default function UsageIndicator() {
       }
     };
     checkSubscription();
-  }, [has]);
+  }, [has, usageRefreshToken]);
 
   if (loading) {
     return (

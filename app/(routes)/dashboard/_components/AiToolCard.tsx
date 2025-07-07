@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Image from 'next/image'; 
 import { Button } from "@/components/ui/button"; 
 import Link from 'next/link';
@@ -10,6 +10,8 @@ import axios from 'axios';
 import ResumeUploadDialog from './ResumeUploadDialog';
 import { checkUsageLimits, FREE_TIER_LIMITS } from '@/lib/subscription-utils';
 import CoverLetterDialog from './CoverLetterDialog';
+import RoadmapGeneratorDialog from './RoadmapGeneratorDialog';
+import { UsageContext } from './UsageProvider';
 
 export interface TOOL{
   name:string,
@@ -31,6 +33,8 @@ function AiToolCard({tool}:AIToolProps) {
   const[openResumeUpload,setOpenResumeUpload]=useState(false);
   const[openCoverLetterDialog, setOpenCoverLetterDialog] = useState(false);
   const [isChecking, setIsChecking] = useState(false);
+  const[openRoadmapDialog, setOpenRoadmapDialog] = useState(false);
+  const { refreshUsage } = useContext(UsageContext);
 
   const onClickButton=async()=>{
     setIsChecking(true);
@@ -61,11 +65,19 @@ function AiToolCard({tool}:AIToolProps) {
       if(tool.name=='AI Resume Anayzer'){
         setOpenResumeUpload(true);
         setIsChecking(false);
+        refreshUsage();
         return;
       }
       if(tool.name==='Cover Letter Generator'){
         setOpenCoverLetterDialog(true);
         setIsChecking(false);
+        refreshUsage();
+        return;
+      }
+      if(tool.name==='Career Roadmap Generator'){
+        router.push(tool.path);
+        setIsChecking(false);
+        refreshUsage();
         return;
       }
       // Always create the record before navigating for all tools
@@ -75,6 +87,7 @@ function AiToolCard({tool}:AIToolProps) {
         aiAgentType:tool.path
       });
       console.log(result);
+      refreshUsage();
       router.push(tool.path + "/" + id);
     } catch (error) {
       console.error('Error checking permissions:', error);
@@ -101,6 +114,9 @@ function AiToolCard({tool}:AIToolProps) {
      <ResumeUploadDialog openResumeUpload={openResumeUpload}
      setOpenResumeDialog={setOpenResumeUpload}/>
      <CoverLetterDialog open={openCoverLetterDialog} setOpen={setOpenCoverLetterDialog} />
+     {tool.name==='Career Roadmap Generator' && (
+       <RoadmapGeneratorDialog open={openRoadmapDialog} setOpen={setOpenRoadmapDialog} />
+     )}
     </div>
   )
 }

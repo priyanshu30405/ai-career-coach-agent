@@ -95,28 +95,62 @@ function ResumeAnalyzerPage() {
             </div>
           </div>
           
-          {/* Sidebar with actions */}
+          {/* Sidebar with resume insights */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-lg font-semibold mb-4">Actions</h3>
-              <button 
-                onClick={() => window.location.href = '/dashboard'}
-                className="w-full mb-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-              >
-                Analyze Another Resume
-              </button>
-              <button 
-                onClick={() => window.location.href = '/ai-tools/ai-chat'}
-                className="w-full mb-3 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
-              >
-                Get Career Advice
-              </button>
-              <button 
-                onClick={() => window.location.href = '/ai-tools/ai-roadmap-agent'}
-                className="w-full px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition"
-              >
-                Generate Career Roadmap
-              </button>
+            <div className="bg-gradient-to-br from-blue-50 to-violet-100 dark:from-neutral-800 dark:to-neutral-900 rounded-2xl shadow-xl p-6 flex flex-col gap-6 border border-blue-100 dark:border-blue-900 backdrop-blur-lg">
+              <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
+                <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Resume Insights
+              </h3>
+              {/* Strengths */}
+              {analysisData.whats_good && analysisData.whats_good.length > 0 && (
+                <div>
+                  <div className="font-semibold text-green-700 mb-1 flex items-center gap-1">
+                    <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                    Strengths
+                  </div>
+                  <ul className="flex flex-wrap gap-2 mt-1">
+                    {analysisData.whats_good.map((tip, idx) => (
+                      <li key={idx} className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                        <svg className="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
+                        {tip}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {/* Areas to Improve */}
+              {analysisData.needs_improvement && analysisData.needs_improvement.length > 0 && (
+                <div>
+                  <div className="font-semibold text-yellow-700 mb-1 flex items-center gap-1">
+                    <svg className="w-4 h-4 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+                    Areas to Improve
+                  </div>
+                  <ul className="flex flex-wrap gap-2 mt-1">
+                    {analysisData.needs_improvement.map((tip, idx) => (
+                      <li key={idx} className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                        <svg className="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
+                        {tip}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {/* Tips for Improvement */}
+              {analysisData.tips_for_improvement && analysisData.tips_for_improvement.length > 0 && (
+                <div>
+                  <div className="font-semibold text-blue-700 mb-1 flex items-center gap-1">
+                    <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01"/></svg>
+                    AI Tips
+                  </div>
+                  <ul className="list-disc list-inside text-sm text-blue-900 dark:text-blue-200 space-y-1 pl-2">
+                    {analysisData.tips_for_improvement.map((tip, idx) => (
+                      <li key={idx}>{tip}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {/* Quick Actions */}
             </div>
           </div>
         </div>

@@ -40,7 +40,7 @@ function AiChat() {
  const GetMessageList=async()=>{
   const result= await axios.get('/api/history?recordId='+chatid);
   console.log(result.data);
-  setMessageList(result?.data?.content)
+  setMessageList(Array.isArray(result?.data?.content) ? result.data.content : []);
  }
  const onSend = async()=>{
   setLoading(true);
@@ -63,7 +63,7 @@ console.log(messageList);
 
 useEffect(()=>{
   //Save message into Database
- messageList.length>0 && updateMessageList();
+  Array.isArray(messageList) && messageList.length>0 && updateMessageList();
 },[messageList])
 
 
