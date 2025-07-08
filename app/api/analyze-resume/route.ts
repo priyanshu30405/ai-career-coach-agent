@@ -11,6 +11,11 @@ export async function POST(req: NextRequest) {
   const file = formData.get("resumeFile") as File;
   const userId = formData.get("userId") as string;
 
+  // Defensive check: Only process if file is a real upload, not a local path
+  if (!file || typeof file !== 'object' || typeof file.arrayBuffer !== 'function') {
+    return NextResponse.json({ error: "Missing or invalid file upload" }, { status: 400 });
+  }
+
   if (!file || !userId) {
     return NextResponse.json({ error: "Missing file or userId" }, { status: 400 });
   }
