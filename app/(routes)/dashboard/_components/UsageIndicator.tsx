@@ -61,10 +61,10 @@ export default function UsageIndicator() {
         setIsPro(hasSubscriptionEnabled);
         if (!hasSubscriptionEnabled) {
           const [chat, resume, roadmap, cover] = await Promise.all([
-            checkUsageLimits('chat'),
-            checkUsageLimits('resume'),
-            checkUsageLimits('roadmap'),
-            checkUsageLimits('cover-letter'),
+            checkUsageLimits('/ai-tools/ai-chat'),
+            checkUsageLimits('/ai-tools/ai-resume-analyzer'),
+            checkUsageLimits('/ai-tools/ai-roadmap-agent'),
+            checkUsageLimits('/ai-tools/cover-letter'),
           ]);
           setUsage({
             chat: chat.currentRequests,

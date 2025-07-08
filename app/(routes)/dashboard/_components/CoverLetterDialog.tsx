@@ -45,7 +45,7 @@ export default function CoverLetterDialog({ open, setOpen }: { open: boolean; se
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             recordId,
-            aiAgentType: 'cover-letter',
+            aiAgentType: '/ai-tools/cover-letter',
             content: {
               jobTitle,
               companyName,

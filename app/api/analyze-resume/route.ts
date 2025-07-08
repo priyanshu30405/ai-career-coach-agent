@@ -59,7 +59,7 @@ ${resumeText}
     userEmail: userId,
     content: analysis,
     createdAt: new Date().toISOString(),
-    aiAgentType: "ai-resume-analyzer",
+    aiAgentType: '/ai-tools/ai-resume-analyzer',
     metaData: dataUrl, // Store base64 PDF data
   });
 

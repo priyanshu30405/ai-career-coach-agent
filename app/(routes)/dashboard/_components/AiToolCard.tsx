@@ -84,7 +84,7 @@ function AiToolCard({tool}:AIToolProps) {
       const result = await axios.post('/api/history',{
         recordId:id,
         content:[],
-        aiAgentType:tool.path
+        aiAgentType: tool.path // tool.path should be standardized like '/ai-tools/ai-chat', etc.
       });
       console.log(result);
       refreshUsage();
