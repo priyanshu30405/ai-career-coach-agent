@@ -11,9 +11,9 @@ export async function POST(req: NextRequest) {
   const file = formData.get("resumeFile") as File;
   const userId = formData.get("userId") as string;
 
-  // Defensive check: Only process if file is a real upload, not a local path
-  if (!file || typeof file !== 'object' || typeof file.arrayBuffer !== 'function') {
-    return NextResponse.json({ error: "Missing or invalid file upload" }, { status: 400 });
+  // Defensive: Prevent accidental local file reads in production
+  if (process.env.NODE_ENV === 'production' && (!file || typeof file !== 'object')) {
+    return NextResponse.json({ error: "File upload required in production" }, { status: 400 });
   }
 
   if (!file || !userId) {
