@@ -99,7 +99,7 @@ function AiToolCard({tool}:AIToolProps) {
 
   return (
     <div className='p-3 border rounded-lg'>
-     <Image src={tool.icon} width={40} height={40} alt={tool.name}/>
+     <img src={tool.icon} width={40} height={40} alt={tool.name} />
      <h2 className='font-bold mt-2'>{tool.name}</h2>
      <p className='text-gray-400 min-h-[32px]'>{tool.desc}</p>
     

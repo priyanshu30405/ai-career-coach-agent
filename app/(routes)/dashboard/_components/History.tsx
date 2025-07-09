@@ -63,7 +63,7 @@ function History() {
 
      {userHistory?.length==0 ?
     <div className='flex items-center justify-center mt-5 flex-col mt-6'>
-      <Image src={'/bulb.png'} alt='bulb'
+      <img src={'/bulb.png'} alt='bulb'
       width={50}
       height={50}
       />
@@ -89,7 +89,7 @@ function History() {
               }
             }}
           >
-            <Image
+            <img
               src={
                 history?.aiAgentType?.toLowerCase().includes('roadmap') ? '/roadmap.png' :
                 history?.aiAgentType?.toLowerCase().includes('resume') ? '/resume.png' :
