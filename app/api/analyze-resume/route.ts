@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import pdfParse from "pdf-parse";
 import { OpenAI } from "openai";
 import { db } from "@/configs/db";
 import { HistoryTable } from "@/configs/schema";
@@ -7,6 +6,7 @@ import { HistoryTable } from "@/configs/schema";
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY! });
 
 export async function POST(req: NextRequest) {
+  const pdfParse = (await import('pdf-parse')).default;
   const formData = await req.formData();
   const file = formData.get("resumeFile") as File;
   const userId = formData.get("userId") as string;
