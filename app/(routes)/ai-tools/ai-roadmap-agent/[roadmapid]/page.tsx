@@ -193,6 +193,7 @@ function RoadmapPage() {
   };
 
   useEffect(() => {
+    setLoading(true); // Show spinner instantly
     if (roadmapid) {
       fetchRoadmapData();
     } else {
@@ -204,7 +205,6 @@ function RoadmapPage() {
 
   const fetchRoadmapData = async () => {
     try {
-      setLoading(true);
       const result = await axios.get('/api/history?recordId=' + roadmapid);
       console.log('Roadmap API result:', result.data);
       if (

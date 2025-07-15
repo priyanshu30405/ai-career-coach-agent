@@ -102,8 +102,8 @@ AI Career Coach Agent is a comprehensive, full-stack application that leverages 
    ```
 
 5. **Start Development Server**
-   ```bash
-   npm run dev
+```bash
+npm run dev
    ```
 
 6. **Open your browser**

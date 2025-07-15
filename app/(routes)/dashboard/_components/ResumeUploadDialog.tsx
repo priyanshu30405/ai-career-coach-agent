@@ -34,7 +34,6 @@ function ResumeUploadDialog({ openResumeUpload, setOpenResumeDialog }: any) {
   };
 
   const onUploadAndAnalyze = async () => {
-    setLoading(true);
     const recordId = uuidv4(); // ✅ Moved here to fix the error
 
     try {
@@ -108,7 +107,10 @@ function ResumeUploadDialog({ openResumeUpload, setOpenResumeDialog }: any) {
         </DialogHeader>
         <DialogFooter>
           <Button variant={'outline'} onClick={() => setOpenResumeDialog(false)}>Cancel</Button>
-          <Button disabled={!file || loading} onClick={onUploadAndAnalyze}>
+          <Button disabled={!file || loading} onClick={() => {
+            setLoading(true);
+            onUploadAndAnalyze();
+          }}>
             {loading ? <Loader2Icon className='animate-spin mr-2' /> : <Sparkles className='mr-2' />}
             Upload & Analyze
           </Button>

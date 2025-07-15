@@ -36,66 +36,35 @@ function AiToolCard({tool}:AIToolProps) {
   const[openRoadmapDialog, setOpenRoadmapDialog] = useState(false);
   const { refreshUsage } = useContext(UsageContext);
 
-  const onClickButton=async()=>{
-    setIsChecking(true);
-    
-    try {
-      // Check subscription status
-      if (!has) {
-        alert('Unable to verify subscription status. Please try again.');
-        return;
-      }
-      
-      const hasSubscriptionEnabled = await has({ plan: 'pro' });
-      
-      // TEMPORARILY DISABLE LIMITS FOR TESTING - REMOVE THIS COMMENT BLOCK TO RE-ENABLE
-      /*
-      if (!hasSubscriptionEnabled) {
-        // For free tier, check usage limits
-        const usageLimits = await checkUsageLimits(tool.path);
-        
-        if (usageLimits.currentRequests >= usageLimits.maxRequests) {
-          alert(`You've reached the free tier limit of ${usageLimits.maxRequests} requests for this tool. Please upgrade to Pro for unlimited access.`);
-          router.push('/billing');
-          return;
-        }
-      }
-      */
-
-      if(tool.name=='AI Resume Anayzer'){
-        setOpenResumeUpload(true);
-        setIsChecking(false);
-        refreshUsage();
-        return;
-      }
-      if(tool.name==='Cover Letter Generator'){
-        setOpenCoverLetterDialog(true);
-        setIsChecking(false);
-        refreshUsage();
-        return;
-      }
-      if(tool.name==='Career Roadmap Generator'){
-        router.push(tool.path);
-        setIsChecking(false);
-        refreshUsage();
-        return;
-      }
-      // Always create the record before navigating for all tools
-      const result = await axios.post('/api/history',{
-        recordId:id,
-        content:[],
-        aiAgentType: tool.path // tool.path should be standardized like '/ai-tools/ai-chat', etc.
-      });
-      console.log(result);
+  const onClickButton = async () => {
+    // Open UI or navigate instantly
+    if (tool.name === 'AI Resume Anayzer') {
+      setOpenResumeUpload(true);
+      // Async checks can be done in the dialog after opening
       refreshUsage();
-      router.push(tool.path + "/" + id);
-    } catch (error) {
-      console.error('Error checking permissions:', error);
-      alert('Unable to verify subscription status. Please try again.');
-    } finally {
-      setIsChecking(false);
+      return;
     }
-  }
+    if (tool.name === 'Cover Letter Generator') {
+      setOpenCoverLetterDialog(true);
+      refreshUsage();
+      // Async checks can be done in the dialog after opening
+      return;
+    }
+    if (tool.name === 'Career Roadmap Generator') {
+      router.push(tool.path); // Navigate instantly
+      refreshUsage();
+      // Async checks can be done in the page after navigation
+      return;
+    }
+    if (tool.name === 'AI Career Q&A Chat') {
+      // Instantly create a new chat session and navigate
+      const id = uuidv4();
+      router.push(tool.path + '/' + id);
+      refreshUsage();
+      // Optionally, you can do async record creation in the chat page
+      return;
+    }
+  };
 
   return (
     <div className='p-3 border rounded-lg'>

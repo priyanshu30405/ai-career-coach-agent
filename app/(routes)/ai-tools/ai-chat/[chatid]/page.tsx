@@ -48,14 +48,24 @@ function AiChat() {
     content:userInput,
     role:'user',
     type:'text'
-  }])
-       setUserInput('');
-      const result =await axios.post('/api/ai-career-chat-agent',{
-        userInput:userInput
- });
- console.log(result.data);
- setMessageList(prev=>[...prev,result.data])
- setLoading(false);
+  }]);
+  setUserInput('');
+  // Add a placeholder for AI response immediately
+  setMessageList(prev=>[...prev,{
+    content:'',
+    role:'ai',
+    type:'text',
+    loading:true
+  }]);
+  const result =await axios.post('/api/ai-career-chat-agent',{
+    userInput:userInput
+  });
+  // Replace the placeholder with the actual response
+  setMessageList(prev=>[
+    ...prev.slice(0, -1),
+    result.data
+  ]);
+  setLoading(false);
 }
 
 
