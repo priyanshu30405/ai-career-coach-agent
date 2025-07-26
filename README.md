@@ -15,28 +15,48 @@ AI Career Coach Agent is a comprehensive, full-stack application that leverages 
 
 ## 📸 Screenshots & Demo
 
-### 🏠 Dashboard Overview
-![Dashboard Overview](https://github.com/user-attachments/assets/943ba88e-154d-4901-b2ea-e3319cbf3605)
+1. **🔐 Login Page**
+   
+   ![Login Page](https://github.com/user-attachments/assets/943ba88e-154d-4901-b2ea-e3319cbf3605)
 
-### 🤖 AI Career Q&A Chat Interface
-![AI Career Q&A Chat](https://github.com/user-attachments/assets/7ec82dfe-b0a1-4a6c-8a5d-6e07f6b400fb)
+2. **🏠 Dashboard Overview**
+   
+   ![Dashboard Overview](https://github.com/user-attachments/assets/7ec82dfe-b0a1-4a6c-8a5d-6e07f6b400fb)
 
-### 📄 AI Resume Analyzer
-![Resume Analyzer](https://github.com/user-attachments/assets/09617d45-d76c-4eb1-bb37-a975adf2e2ba)
+3. **🤖 AI Career Q&A Chat Interface**
+   
+   ![AI Career Q&A Chat](https://github.com/user-attachments/assets/09617d45-d76c-4eb1-bb37-a975adf2e2ba)
 
-### 🗺️ Career Roadmap Generator
-![Career Roadmap Generator](https://github.com/user-attachments/assets/6ba257e4-74a9-481c-9275-754e262ce6c1)
+4. **📄 AI Resume Analyzer**
+   
+   ![Resume Analyzer](https://github.com/user-attachments/assets/6ba257e4-74a9-481c-9275-754e262ce6c1)
 
-### ✉️ Cover Letter Generator
-![Cover Letter Generator](https://github.com/user-attachments/assets/9d1d14c2-d4e2-44c3-a4ea-1023c36e83bd)
+5. **🗺️ Career Roadmap Generator**
+   
+   ![Career Roadmap Generator](https://github.com/user-attachments/assets/9d1d14c2-d4e2-44c3-a4ea-1023c36e83bd)
 
-### 👤 User Profile & Authentication
-![User Profile](https://github.com/user-attachments/assets/c78c209d-b2fc-4662-9a43-37d61d787859)
+6. **🗺️ Career Roadmap Generator**
+   
+   ![Career Roadmap Generator 2](https://github.com/user-attachments/assets/c78c209d-b2fc-4662-9a43-37d61d787859)
 
-### 📊 Usage History & Analytics
-![Usage History](https://github.com/user-attachments/assets/819af5e0-3f03-477b-8d56-1f308704b8b7)
+7. **✉️ Cover Letter Generator**
+   
+   ![Cover Letter Generator](https://github.com/user-attachments/assets/819af5e0-3f03-477b-8d56-1f308704b8b7)
+
+8. **📊 Usage History & Analytics**
+   
+   ![Usage History](https://github.com/user-attachments/assets/ed7a5219-7d92-4cf4-91dd-4a9113266ced)
+
+9. **💳 Subscription Plans**
+   
+   ![Subscription Plans](https://github.com/user-attachments/assets/a1bae6cd-690c-49f2-8e1c-f44d4c964b99)
+
+10. **👤 User Profile & Authentication**
+   
+   ![User Profile](https://github.com/user-attachments/assets/64af9276-0e20-4e83-b288-3d7d128dd004)
 
 ### 🔧 Additional Features
+
 ![Additional Features 1](https://github.com/user-attachments/assets/ed7a5219-7d92-4cf4-91dd-4a9113266ced)
 
 ![Additional Features 2](https://github.com/user-attachments/assets/a1bae6cd-690c-49f2-8e1c-f44d4c964b99)
