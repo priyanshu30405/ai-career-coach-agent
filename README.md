@@ -54,14 +54,7 @@ AI Career Coach Agent is a comprehensive, full-stack application that leverages 
 10. **👤 User Profile & Authentication**
    
    ![User Profile](https://github.com/user-attachments/assets/64af9276-0e20-4e83-b288-3d7d128dd004)
-
-### 🔧 Additional Features
-
-![Additional Features 1](https://github.com/user-attachments/assets/ed7a5219-7d92-4cf4-91dd-4a9113266ced)
-
-![Additional Features 2](https://github.com/user-attachments/assets/a1bae6cd-690c-49f2-8e1c-f44d4c964b99)
-
-![Additional Features 3](https://github.com/user-attachments/assets/64af9276-0e20-4e83-b288-3d7d128dd004)
+   
 
 ### ✨ Key Features
 
